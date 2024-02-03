@@ -1,0 +1,6395 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+      "/projects": {
+        "post": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Create project",
+          "operationId": "createProject",
+          "description": "Create a new project",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Project successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Search projects",
+          "operationId": "searchProjects",
+          "description": "List matching Project",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Project"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}": {
+        "delete": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Delete project by uuid",
+          "operationId": "deleteProjectsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The project was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Update project by uuid",
+          "operationId": "updateProjectsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Project data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Project"
+          ],
+          "summary": "Get project by uuid",
+          "operationId": "getProjectsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Project data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/nodes": {
+        "post": {
+          "tags": [
+            "Node"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "summary": "Create node",
+          "operationId": "createNode",
+          "description": "Create a new node",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Node"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Node successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Node"
+          ],
+          "summary": "Search nodes",
+          "operationId": "searchNodes",
+          "description": "List matching Node",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Node"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/nodes/{nodeId}": {
+        "delete": {
+          "tags": [
+            "Node"
+          ],
+          "summary": "Delete node by uuid",
+          "operationId": "deleteNodesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/nodeId"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The node was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Node"
+          ],
+          "summary": "Update node by uuid",
+          "operationId": "updateNodesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/nodeId"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Node"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Node data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Node"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Node"
+          ],
+          "summary": "Get node by uuid",
+          "operationId": "getNodesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/nodeId"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Node data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Node"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devices": {
+        "post": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Create device",
+          "operationId": "createDevice",
+          "description": "Create a new device",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Device successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Search devices",
+          "operationId": "searchDevices",
+          "description": "List matching Device",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Device"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devices/count": {
+        "get": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Count devices",
+          "operationId": "countDevices",
+          "responses": {
+            "200": {
+              "description": "Devices number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devices/{uuid}/commands": {
+        "post": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Create and send a command to a device",
+          "operationId": "sendCommandToDeviceById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the command",
+                      "example": "reboot"
+                    },
+                    "parameters": {
+                      "type": "object",
+                      "example": {
+                        "rebootAfterSeconds": 8
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "parameters"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "The device was removed or didnt exist"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devices/{uuid}": {
+        "delete": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Delete device by uuid",
+          "operationId": "deleteDevicesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The device was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Update device by uuid",
+          "operationId": "updateDevicesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Device data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Device"
+          ],
+          "summary": "Get device by uuid",
+          "operationId": "getDevicesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Device data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assetTypes": {
+        "post": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Create asset type",
+          "operationId": "createAssetType",
+          "description": "Create a new asset type",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "AssetType successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Search asset types",
+          "operationId": "searchAssetTypes",
+          "description": "List matching AssetType",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/AssetType"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assetTypes/count": {
+        "get": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Count asset types",
+          "description": "Count asset types",
+          "operationId": "countAssetTypes",
+          "responses": {
+            "200": {
+              "description": "AssetTypes number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assetTypes/{uuid}": {
+        "delete": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Delete asset type by uuid",
+          "description": "Delete asset type by uuid",
+          "operationId": "deleteAssetTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The asset type was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Update asset type by uuid",
+          "description": "Update asset type by uuid",
+          "operationId": "updateAssetTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "AssetType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AssetType"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "AssetType"
+          ],
+          "summary": "Get asset type by uuid",
+          "description": "Get asset type by uuid",
+          "operationId": "getAssetTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "AssetType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AssetType"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devicetypes": {
+        "post": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Create devicetype",
+          "operationId": "createDeviceType",
+          "description": "Create a new devicetype",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "DeviceType successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Search devicetypes",
+          "operationId": "searchDeviceTypes",
+          "description": "List matching DeviceType",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/DeviceType"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devicetypes/count": {
+        "get": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Count devicetypes",
+          "description": "Count devicetypes",
+          "operationId": "countDeviceTypes",
+          "responses": {
+            "200": {
+              "description": "DeviceTypes number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/devicetypes/{uuid}": {
+        "delete": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Delete devicetype by uuid",
+          "description": "Delete devicetype by uuid",
+          "operationId": "deleteDeviceTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The devicetype was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Update devicetype by uuid",
+          "description": "Update devicetype by uuid",
+          "operationId": "updateDeviceTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "DeviceType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DeviceType"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "DeviceType"
+          ],
+          "summary": "Get devicetype by uuid",
+          "description": "Get devicetype by uuid",
+          "operationId": "getDeviceTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "DeviceType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DeviceType"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/nodetypes": {
+        "post": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Create node type",
+          "operationId": "createNodeType",
+          "description": "Create a new node type",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "NodeType successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Search nodetypes",
+          "operationId": "searchNodeTypes",
+          "description": "List matching NodeType",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/NodeType"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/nodetypes/count": {
+        "get": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Count nodetypes",
+          "description": "Count nodetypes",
+          "operationId": "countNodeTypes",
+          "responses": {
+            "200": {
+              "description": "NodeTypes number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/nodetypes/{uuid}": {
+        "delete": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Delete nodetype by uuid",
+          "description": "Delete nodetype by uuid",
+          "operationId": "deleteNodeTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The nodetype was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Update nodetype by uuid",
+          "description": "Update nodetype by uuid",
+          "operationId": "updateNodeTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeType"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "NodeType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NodeType"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "NodeType"
+          ],
+          "summary": "Get nodetype by uuid",
+          "description": "Get nodetype by uuid",
+          "operationId": "getNodeTypesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "NodeType data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NodeType"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/applications": {
+        "post": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Create application",
+          "operationId": "createApplication",
+          "description": "Create a new application",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Application successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Search applications",
+          "operationId": "searchApplications",
+          "description": "List matching Application",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Application"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/applications/count": {
+        "get": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Count applications",
+          "description": "Count applications",
+          "operationId": "countApplications",
+          "responses": {
+            "200": {
+              "description": "Applications number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/applications/{uuid}": {
+        "delete": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Delete application by uuid",
+          "description": "Delete application by uuid",
+          "operationId": "deleteApplicationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The application was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Update application by uuid",
+          "description": "Update application by uuid",
+          "operationId": "updateApplicationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Application data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Application"
+          ],
+          "summary": "Get application by uuid",
+          "description": "Get application by uuid",
+          "operationId": "getApplicationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Application data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assets": {
+        "post": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Create asset",
+          "operationId": "createAsset",
+          "description": "Create a new asset",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "asset/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Asset successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Search assets",
+          "operationId": "searchAssets",
+          "description": "List matching Asset",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "asset/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Asset"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assets/count": {
+        "get": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Count assets",
+          "description": "Count assets",
+          "operationId": "countAssets",
+          "responses": {
+            "200": {
+              "description": "Assets number",
+              "content": {
+                "asset/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/assets/{uuid}": {
+        "delete": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Delete asset by uuid",
+          "description": "Delete asset by uuid",
+          "operationId": "deleteAssetsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The asset was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Update asset by uuid",
+          "description": "Update asset by uuid",
+          "operationId": "updateAssetsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "asset/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Asset"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Asset data",
+              "content": {
+                "asset/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Asset"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Asset"
+          ],
+          "summary": "Get asset by uuid",
+          "description": "Get asset by uuid",
+          "operationId": "getAssetsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Asset data",
+              "content": {
+                "asset/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Asset"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/plants": {
+        "post": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Create plant",
+          "operationId": "createPlant",
+          "description": "Create a new plant",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plant"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Plant successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Search plants",
+          "operationId": "searchPlants",
+          "description": "List matching Plant",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Plant"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/plants/count": {
+        "get": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Count plants",
+          "operationId": "countPlants",
+          "responses": {
+            "200": {
+              "description": "Plants number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/plants/{uuid}": {
+        "delete": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Delete plant by uuid",
+          "operationId": "deletePlantsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The plant was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Update plant by uuid",
+          "operationId": "updatePlantsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plant"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Plant data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Plant"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Plant"
+          ],
+          "summary": "Get plant by uuid",
+          "operationId": "getPlantsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Plant data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Plant"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/anomalyconfigurations": {
+        "post": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Create anomalyconfiguration",
+          "operationId": "createAnomalyConfiguration",
+          "description": "Create a new anomalyconfiguration",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnomalyConfiguration"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "AnomalyConfiguration successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Search anomalyconfigurations",
+          "operationId": "searchAnomalyConfigurations",
+          "description": "List matching AnomalyConfiguration",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/AnomalyConfiguration"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/anomalyconfigurations/count": {
+        "get": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Count anomalyconfigurations",
+          "description": "Count anomalyconfigurations",
+          "operationId": "countAnomalyConfigurations",
+          "responses": {
+            "200": {
+              "description": "AnomalyConfigurations number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/anomalyconfigurations/{uuid}": {
+        "delete": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Delete anomalyconfiguration by uuid",
+          "description": "Delete anomalyconfiguration by uuid",
+          "operationId": "deleteAnomalyConfigurationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The anomalyconfiguration was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Update anomalyconfiguration by uuid",
+          "description": "Update anomalyconfiguration by uuid",
+          "operationId": "updateAnomalyConfigurationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnomalyConfiguration"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "AnomalyConfiguration data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnomalyConfiguration"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "AnomalyConfiguration"
+          ],
+          "summary": "Get anomalyconfiguration by uuid",
+          "description": "Get anomalyconfiguration by uuid",
+          "operationId": "getAnomalyConfigurationsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "AnomalyConfiguration data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnomalyConfiguration"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/anomalies": {
+        "post": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Create anomaly",
+          "operationId": "createAnomaly",
+          "description": "Create a new anomaly",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Anomaly"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Anomaly successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Search anomalies",
+          "operationId": "searchAnomalies",
+          "description": "List matching Anomaly",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Anomaly"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/anomalies/count": {
+        "get": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Count anomalies",
+          "description": "Count anomalies",
+          "operationId": "countAnomalies",
+          "responses": {
+            "200": {
+              "description": "Anomalies number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/anomalies/{uuid}": {
+        "delete": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Delete anomaly by uuid",
+          "description": "Delete anomaly by uuid",
+          "operationId": "deleteAnomaliesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The anomaly was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Update anomaly by uuid",
+          "description": "Update anomaly by uuid",
+          "operationId": "updateAnomaliesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Anomaly"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Anomaly data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Anomaly"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Get anomaly by uuid",
+          "description": "Get anomaly by uuid",
+          "operationId": "getAnomaliesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Anomaly data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Anomaly"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/anomalies/{uuid}/close": {
+        "put": {
+          "tags": [
+            "Anomaly"
+          ],
+          "summary": "Close anomaly by uuid",
+          "description": "Close anomaly by uuid",
+          "operationId": "closeAnomaliesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "boolean",
+                        "description": "true if the operation was successful"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/accounts": {
+        "get": {
+          "tags": [
+            "Accounts Management"
+          ],
+          "summary": "List accounts in the given project",
+          "operationId": "listAccountsInProject",
+          "description": "List Accounts in the given project filtered by query.",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "roleId",
+              "description": "Filter accounts by roleId",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "groupId",
+              "description": "Filter accounts by groupId",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Accounts"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Accounts Management"
+          ],
+          "summary": "Add account in Project",
+          "operationId": "addAccountInProject",
+          "description": "Create a new account in a given project or invite an existing account to it",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "account": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "description": "A valid email address",
+                          "example": "email@example.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "description": "A valid password"
+                        },
+                        "fullName": {
+                          "type": "string",
+                          "description": "A valid full Name",
+                          "example": "John Doe"
+                        }
+                      }
+                    },
+                    "roleIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "UUID of an existing role in the given project"
+                      }
+                    },
+                    "groupIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "UUID of an existing group in the given project or a new group will be created, using the input as a name."
+                      }
+                    }
+                  },
+                  "required": [
+                    "email"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/accounts/{accountId}": {
+        "delete": {
+          "tags": [
+            "Accounts Management"
+          ],
+          "summary": "Remove given account from a project",
+          "operationId": "removeAccountFromProject",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/accountId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The account was removed from the project or was not present in the project"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Accounts Management"
+          ],
+          "summary": "Find given account within a project",
+          "operationId": "getAccountFromProject",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/accountId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Account data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Accounts"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/apikeys": {
+        "post": {
+          "tags": [
+            "API Keys"
+          ],
+          "summary": "Create API Key",
+          "operationId": "createAPIKey",
+          "description": "Create a new API Key",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAPIKeys"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "API Key successfully created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/APIKeys"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "403": {
+              "$ref": "#/components/responses/ForbiddenResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "API Keys"
+          ],
+          "summary": "Search API Keys",
+          "operationId": "searchAPIKeys",
+          "description": "List matching API Keys",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/APIKeys"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/apikeys/{apikeyId}": {
+        "delete": {
+          "tags": [
+            "API Keys"
+          ],
+          "summary": "Delete API Key by uuid",
+          "operationId": "deleteAPIKeyById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/apikeyId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The API Key was removed or didn't exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "API Keys"
+          ],
+          "summary": "Update API Key by uuid",
+          "operationId": "updateAPIKeysById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/apikeyId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIKeys"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "API Key data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/APIKeys"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "403": {
+              "$ref": "#/components/responses/ForbiddenResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "API Keys"
+          ],
+          "summary": "Get API Key by uuid",
+          "operationId": "getAPIKeyById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/apikeyId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "API Key data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/APIKeys"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/accounts": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Create account",
+          "operationId": "createAccount",
+          "description": "Create a new account",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Search accounts",
+          "operationId": "searchAccounts",
+          "description": "List matching Account",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "roleId",
+              "description": "Filter accounts by roleId",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "groupId",
+              "description": "Filter accounts by groupId",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Accounts"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/accounts/{accountId}": {
+        "delete": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Delete account by uuid",
+          "operationId": "deleteAccountsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/accountId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The account was removed or didn't exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Update account by uuid",
+          "operationId": "updateAccountsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/accountId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Accounts"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Get account by uuid",
+          "operationId": "getAccountsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/accountId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Account data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Accounts"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/accounts/{accountId}/password": {
+        "put": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Update account password",
+          "operationId": "updateAccountPassword",
+          "description": "Updates the account password",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "oldPassword": {
+                      "type": "string"
+                    },
+                    "newPassword": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "newPassword",
+                    "oldPassword"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Password succesfully changed."
+            },
+            "400": {
+              "description": "Invalid payload"
+            },
+            "401": {
+              "description": "INVALID_OLD_PASSWORD"
+            },
+            "409": {
+              "description": "ACCOUNT_INACTIVE"
+            }
+          }
+        }
+      },
+      "/accounts/{accountId}/email": {
+        "put": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Update account email",
+          "operationId": "updateAccountEmail",
+          "description": "Updates the account email, the user must click on the activation email to confirm the change",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "newEmailAddress": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "newEmailAddress"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Email update in process, the user should receive an email to the new email address. The user must click the email to complete the flow."
+            },
+            "400": {
+              "description": "Invalid payload, malformed email address or same address as the old one"
+            },
+            "409": {
+              "description": "ACCOUNT_INACTIVE"
+            }
+          }
+        }
+      },
+      "/accounts/email/update": {
+        "put": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Confirm an email update",
+          "operationId": "confirmAccountEmailUpdate",
+          "description": "Confirms the request to update the email",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "token"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Email update in process, the user should receive an email to the new email address. The user must click the email to complete the flow."
+            },
+            "400": {
+              "description": "Invalid payload, malformed email address or same address as the old one"
+            },
+            "409": {
+              "description": "ACCOUNT_INACTIVE"
+            }
+          }
+        }
+      },
+      "/accounts/activate": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Activate account",
+          "operationId": "activateAccount",
+          "description": "Activate an account",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "$ref": "#/components/schemas/Accounts/properties/email"
+                    },
+                    "token": {
+                      "$ref": "#/components/schemas/AccountActivationToken/properties/token"
+                    },
+                    "password": {
+                      "$ref": "#/components/schemas/Accounts/properties/password"
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "token"
+                  ]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully activated"
+            },
+            "401": {
+              "$ref": "#/components/responses/UnauthorizedActivationResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            },
+            "409": {
+              "$ref": "#/components/responses/ConflictResponse"
+            }
+          }
+        }
+      },
+      "/accounts/logout": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Logout",
+          "operationId": "logout",
+          "description": "Invalidates the current active token or all active tokens owned by current user.",
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lougoutFromEverywhere": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "If set to true, each token belonging to the current user is revoked"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Tokens successfully invalidated"
+            }
+          }
+        }
+      },
+      "/accounts/authenticate": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "summary": "Authenticate account",
+          "operationId": "authenticateAccount",
+          "description": "Authenticate an account",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "$ref": "#/components/schemas/Accounts/properties/email"
+                    },
+                    "password": {
+                      "$ref": "#/components/schemas/Accounts/properties/password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully authenticated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "token": {
+                            "$ref": "#/components/schemas/BaseResource/properties/uuid"
+                          },
+                          "account": {
+                            "$ref": "#/components/schemas/Accounts"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "401": {
+              "$ref": "#/components/responses/UnauthorizedResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/accounts/requestPasswordReset": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "security": [],
+          "summary": "Request password reset",
+          "operationId": "requestPasswordReset",
+          "description": "Request a password reset ",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "email"
+                  ],
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "The email address of the account whose password must be reset."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully activated"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "description": "Account not found"
+            }
+          }
+        }
+      },
+      "/accounts/resetPassword": {
+        "post": {
+          "tags": [
+            "Accounts"
+          ],
+          "security": [],
+          "summary": "Reset password",
+          "operationId": "resetPassword",
+          "description": "Resets password the account password after having received the reset email with the token.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "email",
+                    "token",
+                    "newPassword"
+                  ],
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "The email address of the account whose password must be reset."
+                    },
+                    "token": {
+                      "type": "string",
+                      "description": "The reset token."
+                    },
+                    "newPassword": {
+                      "type": "string",
+                      "description": "The new password for the account identified by the email"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account successfully activated"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "description": "Account not found"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/settings": {
+        "post": {
+          "tags": [
+            "Settings"
+          ],
+          "summary": "Create setting",
+          "operationId": "createSetting",
+          "description": "Create a new setting",
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Setting"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Setting successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Settings"
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "summary": "Search settings",
+          "operationId": "searchSettings",
+          "description": "List matching Setting",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Setting"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/settings/count": {
+        "get": {
+          "tags": [
+            "Settings"
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "summary": "Count settings",
+          "description": "Count settings",
+          "operationId": "countSettings",
+          "responses": {
+            "200": {
+              "description": "Settings number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/settings/{uuid}": {
+        "delete": {
+          "tags": [
+            "Settings"
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "summary": "Delete setting by uuid",
+          "description": "Delete setting by uuid",
+          "operationId": "deleteSettingsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The setting was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Settings"
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "summary": "Update setting by uuid",
+          "description": "Update setting by uuid",
+          "operationId": "updateSettingsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Setting"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Setting data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Setting"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Settings"
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "summary": "Get setting by uuid",
+          "description": "Get setting by uuid",
+          "operationId": "getSettingsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Setting data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Setting"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/roles": {
+        "post": {
+          "tags": [
+            "Roles"
+          ],
+          "summary": "Create role",
+          "operationId": "createRole",
+          "description": "Create a new role",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Role successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Roles"
+          ],
+          "summary": "Search roles",
+          "operationId": "searchRoles",
+          "description": "List matching Role",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Roles"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/roles/{roleId}": {
+        "delete": {
+          "tags": [
+            "Roles"
+          ],
+          "summary": "Delete role by uuid",
+          "operationId": "deleteRolesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/roleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The role was removed or didn't exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Roles"
+          ],
+          "summary": "Update role by uuid",
+          "operationId": "updateRolesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/roleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Roles"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Role data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Roles"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Roles"
+          ],
+          "summary": "Get role by uuid",
+          "operationId": "getRolesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/roleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Role data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Roles"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/aclrules": {
+        "post": {
+          "tags": [
+            "ACL Rules"
+          ],
+          "summary": "Create ACLRule",
+          "operationId": "createACLRule",
+          "description": "Create a new ACLRule",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ACLRules"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "ACLRule successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "403": {
+              "$ref": "#/components/responses/ForbiddenResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "ACL Rules"
+          ],
+          "summary": "Search ACLRules",
+          "operationId": "searchACLRules",
+          "description": "List matching ACLRules",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ACLRules"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/aclrules/{aclruleId}": {
+        "delete": {
+          "tags": [
+            "ACL Rules"
+          ],
+          "summary": "Delete ACLRule by uuid",
+          "operationId": "deleteACLRuleById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/aclruleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The ACLRule was removed or didn't exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "ACL Rules"
+          ],
+          "summary": "Update ACL Rules by uuid",
+          "operationId": "updateACLRulesById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/aclruleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ACLRules"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "ACL Rule data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ACLRules"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "403": {
+              "$ref": "#/components/responses/ForbiddenResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "ACL Rules"
+          ],
+          "summary": "Get ACLRule by uuid",
+          "operationId": "getACLRuleById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/bearerAuthHeader"
+            },
+            {
+              "$ref": "#/components/parameters/projectId"
+            },
+            {
+              "$ref": "#/components/parameters/aclruleId"
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "ACLRule data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ACLRules"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groups": {
+        "post": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Create group",
+          "operationId": "createGroup",
+          "description": "Create a new group",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groups"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Group successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Search groups",
+          "operationId": "searchGroups",
+          "description": "List matching Group",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Groups"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groups/count": {
+        "get": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Count groups",
+          "description": "Count groups",
+          "operationId": "countGroups",
+          "responses": {
+            "200": {
+              "description": "Groups number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groups/{uuid}": {
+        "delete": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Delete group by uuid",
+          "description": "Delete group by uuid",
+          "operationId": "deleteGroupsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The group was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Update group by uuid",
+          "description": "Update group by uuid",
+          "operationId": "updateGroupsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groups"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Group data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Groups"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Groups"
+          ],
+          "summary": "Get group by uuid",
+          "description": "Get group by uuid",
+          "operationId": "getGroupsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Group data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Groups"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groupmemberships": {
+        "post": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Create groupmembership",
+          "operationId": "createGroupmembership",
+          "description": "Create a new groupmembership",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groupmemberships"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Groupmembership successfully created"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Search groupmemberships",
+          "operationId": "searchGroupmemberships",
+          "description": "List matching Groupmembership",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/filterParameter"
+            },
+            {
+              "$ref": "#/components/parameters/skipParameter"
+            },
+            {
+              "$ref": "#/components/parameters/limitParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Groupmemberships"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groupmemberships/count": {
+        "get": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Count groupmemberships",
+          "description": "Count groupmemberships",
+          "operationId": "countGroupmemberships",
+          "responses": {
+            "200": {
+              "description": "Groupmemberships number",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "example": "42"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/groupmemberships/{uuid}": {
+        "delete": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Delete groupmembership by uuid",
+          "description": "Delete groupmembership by uuid",
+          "operationId": "deleteGroupmembershipsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The groupmembership was removed or didnt exist"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Update groupmembership by uuid",
+          "description": "Update groupmembership by uuid",
+          "operationId": "updateGroupmembershipsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groupmemberships"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Groupmembership data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Groupmemberships"
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Groupmembership"
+          ],
+          "summary": "Get groupmembership by uuid",
+          "description": "Get groupmembership by uuid",
+          "operationId": "getGroupmembershipsById",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Groupmembership data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Groupmemberships"
+                  }
+                }
+              }
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFoundResponse"
+            }
+          }
+        }
+      },
+      "/verify": {
+        "get": {
+          "tags": [
+            "Accounts",
+            "API Keys"
+          ],
+          "summary": "Verify if the client can forward requests to server",
+          "operationId": "verify",
+          "description": "Verify if the client can forward requests to server",
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "required": true,
+              "description": "Bearer | API Key",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "BearerAuth": []
+            },
+            {
+              "ApiKeyAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "$ref": "#/components/responses/OKResponse"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            },
+            "401": {
+              "$ref": "#/components/responses/UnauthorizedResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/telemetry": {
+        "post": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Publish telemetry data",
+          "operationId": "publishTelemetryData",
+          "description": "Publishes telemetry data",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "projectId",
+              "description": "uuid of the project to which the device belongs to",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "forceInsert",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "true",
+                  "false"
+                ]
+              },
+              "description": "If set to 'true' will ignore sampling time and will just insert metrics."
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "name": "temperature",
+                    "value": 19.7,
+                    "time": "2023-01-15T00:00:00.000Z",
+                    "deviceId": "5d15b4ed-64c1-4899-bf22-1684450d76b0"
+                  }
+                ],
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Data"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Insert request successfully accepted. Some readings might not be written due to sampling time (writing too often may cause some metrics to be dropped)"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Upsert telemetry data",
+          "operationId": "upsertTelemetryData",
+          "description": "Upsert telemetry data. If the timestamp already exists for this timeseries it overwrites the point.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "projectId",
+              "description": "uuid of the project to which the device belongs to",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Data"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Insert request successfully accepted. Some readings might not be written due to sampling time (writing too often may cause some metrics to be dropped)"
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Find telemetry data",
+          "operationId": "searchTelemetryData",
+          "description": "List matching telemetry data points",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/name"
+            },
+            {
+              "$ref": "#/components/parameters/deviceId"
+            },
+            {
+              "$ref": "#/components/parameters/timeFrom"
+            },
+            {
+              "$ref": "#/components/parameters/timeTo"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": {
+                      "someOtherDeviceId": {
+                        "humidity": [
+                          [
+                            "2020-11-06T15:48:35.084Z",
+                            3.875
+                          ]
+                        ],
+                        "temperature": [
+                          [
+                            "2020-11-06T15:48:35.084Z",
+                            23.2
+                          ]
+                        ]
+                      },
+                      "someDeviceId": {
+                        "humidity": [
+                          [
+                            "2020-11-06T15:43:14.810Z",
+                            5.875
+                          ],
+                          [
+                            "2020-11-06T15:48:35.084Z",
+                            5.875
+                          ]
+                        ],
+                        "temperature": [
+                          [
+                            "2020-11-06T15:43:14.810Z",
+                            25.1
+                          ],
+                          [
+                            "2020-11-06T15:48:35.084Z",
+                            25.2
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/telemetry/query": {
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Query timeseries",
+          "operationId": "queryTimeseries",
+          "description": "Query and Aggregate timeseries",
+          "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "required": true,
+              "description": "JSON string representation of a TimeseriesQuery",
+              "schema": {
+                "$ref": "#/components/schemas/TimeseriesQuery"
+              },
+              "example": [
+                {
+                  "query": {
+                    "name": [
+                      "activepowertot"
+                    ],
+                    "series": [
+                      "devices/addc4954-eb34-4adf-8d86-cc5e4058e1a3/activepowertot"
+                    ],
+                    "timeFrom": "2022-10-27T10:00:00.000Z",
+                    "timeTo": "2022-10-27T14:00:00.000Z"
+                  },
+                  "pipeline": [
+                    {
+                      "resample": {
+                        "interval": 900000,
+                        "operation": "avg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "name": [
+                      "activepowertot"
+                    ],
+                    "series": [
+                      "devices/01272385-cb9c-4c5f-9e8f-d030263bad2a/impenergy",
+                      "devices/01272385-cb9c-4c5f-9e8f-d030263bad2a/expenergy"
+                    ],
+                    "timeFrom": "2022-10-27T10:00:00.000Z",
+                    "timeTo": "2022-10-27T14:00:00.000Z"
+                  },
+                  "pipeline": [
+                    {
+                      "resample": {
+                        "interval": 900000,
+                        "operation": "delta"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [
+                      {
+                        "name": "devices/12345/power",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      },
+                      {
+                        "name": "devices/12345/energy/delta/quarter",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      }
+                    ]
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Query timeseries",
+          "operationId": "queryTimeseries",
+          "description": "Query and Aggregate timeseries",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TimeseriesQuery"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [
+                      {
+                        "name": "devices/12345/power",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      },
+                      {
+                        "name": "devices/12345/energy/delta/quarter",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      }
+                    ]
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/${projectId}/historical/query": {
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Query historical timeseries from cold storage",
+          "operationId": "queryHistoricalTimeseries",
+          "description": "Query and Aggregate timeseries data from cold storage. It has the same api and format as /telemetry/query but data comes from cold storage.",
+          "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "required": true,
+              "description": "JSON string representation of a TimeseriesQuery",
+              "schema": {
+                "$ref": "#/components/schemas/TimeseriesQuery"
+              },
+              "example": [
+                {
+                  "query": {
+                    "name": [
+                      "activepowertot"
+                    ],
+                    "series": [
+                      "devices/addc4954-eb34-4adf-8d86-cc5e4058e1a3/activepowertot"
+                    ],
+                    "timeFrom": "2022-10-27T10:00:00.000Z",
+                    "timeTo": "2022-10-27T14:00:00.000Z"
+                  },
+                  "pipeline": [
+                    {
+                      "resample": {
+                        "interval": 900000,
+                        "operation": "avg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "name": [
+                      "activepowertot"
+                    ],
+                    "series": [
+                      "devices/01272385-cb9c-4c5f-9e8f-d030263bad2a/impenergy",
+                      "devices/01272385-cb9c-4c5f-9e8f-d030263bad2a/expenergy"
+                    ],
+                    "timeFrom": "2022-10-27T10:00:00.000Z",
+                    "timeTo": "2022-10-27T14:00:00.000Z"
+                  },
+                  "pipeline": [
+                    {
+                      "resample": {
+                        "interval": 900000,
+                        "operation": "delta"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": [
+                      {
+                        "name": "devices/12345/power",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      },
+                      {
+                        "name": "devices/12345/energy/delta/quarter",
+                        "data": [
+                          [
+                            "2022-10-27T10:15:00.000Z",
+                            0
+                          ],
+                          [
+                            "2022-10-27T10:16:00.000Z",
+                            0
+                          ]
+                        ]
+                      }
+                    ]
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/count": {
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Count entries",
+          "operationId": "countData",
+          "description": "Count entries with the specified match criteria",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/name"
+            },
+            {
+              "$ref": "#/components/parameters/deviceId"
+            },
+            {
+              "$ref": "#/components/parameters/timeFrom"
+            },
+            {
+              "$ref": "#/components/parameters/timeTo"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Count entries with the specified match criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": {
+                      "someOtherDeviceId": {
+                        "humidity": 200,
+                        "temperature": 350
+                      },
+                      "someDeviceId": {
+                        "illuminance": 600
+                      }
+                    }
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/telemetry/export": {
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Export query results to XLSX",
+          "operationId": "exportToXLSX",
+          "description": "Same api as /telemetry but the output is in XLSX format",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "locale",
+              "description": "The locale to use for the time string of each measurement",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "timezone",
+              "description": "The timezone to use for the time string of each measurement",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/name"
+            },
+            {
+              "$ref": "#/components/parameters/deviceId"
+            },
+            {
+              "$ref": "#/components/parameters/timeFrom"
+            },
+            {
+              "$ref": "#/components/parameters/timeTo"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {}
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      },
+      "/projects/{projectId}/telemetry/last": {
+        "get": {
+          "tags": [
+            "Data"
+          ],
+          "summary": "Get latest values",
+          "operationId": "getLatestValues",
+          "description": "getLatestValues",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/deviceId"
+            },
+            {
+              "name": "before",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "description": "Fetch the last value before this timestamp. Defaults to now."
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "description": "The name or names of properties to include in the query. Defaults to all properties."
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "search results matching criteria",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data": {
+                      "temperature": 11,
+                      "humidity": 24.1
+                    }
+                  },
+                  "schema": {
+                    "properties": {
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequestResponse"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {},
+      "responses": {
+        "BadRequestResponse": {
+          "description": "Bad input was provided. Response might contain more information about what was wrong"
+        },
+        "NotFoundResponse": {
+          "description": "The resource could not be found"
+        },
+        "AuthenticationSuccessfulResponse": {
+          "description": "Credentials were accepted and an authentication token is provided in the response"
+        },
+        "OKResponse": {
+          "description": "Everything fine"
+        },
+        "UnauthorizedResponse": {
+          "description": "Invalid credentials"
+        },
+        "UnauthorizedActivationResponse": {
+          "description": "Wrong activation code"
+        },
+        "ForbiddenResponse": {
+          "description": "Account has not the permission to complete the operation"
+        },
+        "ConflictResponse": {
+          "description": "Account as already been activated"
+        }
+      },
+      "parameters": {
+        "filterParameter": {
+          "in": "query",
+          "name": "filter",
+          "description": "pass an optional search json object for filtering results",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "skipParameter": {
+          "in": "query",
+          "name": "skip",
+          "description": "number of records to skip for pagination",
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        },
+        "limitParameter": {
+          "in": "query",
+          "name": "limit",
+          "description": "maximum number of records to return",
+          "schema": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 50
+          }
+        },
+        "uuid": {
+          "in": "path",
+          "name": "uuid",
+          "description": "The unique identifier of the requested resource",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "projectId": {
+          "in": "path",
+          "name": "projectId",
+          "description": "The unique identifier of the project",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "nodeId": {
+          "in": "path",
+          "name": "nodeId",
+          "description": "The unique identifier of the node",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "deploymentId": {
+          "in": "path",
+          "name": "deploymentId",
+          "description": "The unique identifier of the deployment",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "bearerAuthHeader": {
+          "in": "header",
+          "name": "Authorization",
+          "required": true,
+          "description": "The Bearer token",
+          "example": "Bearer W5wwSsJwJwco3tZ0",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "apiKeyAuthHeader": {
+          "in": "header",
+          "name": "Authorization",
+          "required": true,
+          "description": "The API Key",
+          "example": "APIKey zaCELgL.0imfnc8mVLWwsAawjYr4Rx-Af50DDqtlx",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "apikeyId": {
+          "in": "path",
+          "name": "apikeyId",
+          "description": "The unique identifier of the API Key",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "accountId": {
+          "in": "path",
+          "name": "accountId",
+          "description": "The unique identifier of the account",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "roleId": {
+          "in": "path",
+          "name": "roleId",
+          "description": "The unique identifier of the role",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "aclruleId": {
+          "in": "path",
+          "name": "aclruleId",
+          "description": "The unique identifier of the ACL Rule",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "in": "query",
+          "name": "name",
+          "description": "The metric name, for example `power` or `current`",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "deviceId": {
+          "in": "query",
+          "name": "deviceId",
+          "description": "The id of the device",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        "timeFrom": {
+          "in": "query",
+          "name": "timeFrom",
+          "description": "Limit the time frame for the query, to be used with `timeTo`. The default timewindow is the last hour",
+          "required": true,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "A ISO 8601 date, like `2020-11-06T15:58:21.254Z`"
+              },
+              {
+                "type": "number",
+                "description": "A unix timestamp, to milliseconds, like `1604678323985`"
+              }
+            ]
+          }
+        },
+        "timeTo": {
+          "in": "query",
+          "name": "timeTo",
+          "description": "Limit the time frame for the query, to be used with `timeFrom`. The default timewindow is the last hour",
+          "required": true,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "A ISO 8601 date, like `2020-11-06T15:58:21.254Z`"
+              },
+              {
+                "type": "number",
+                "description": "A unix timestamp, to milliseconds, like `1604678323985`"
+              }
+            ]
+          }
+        }
+      },
+      "schemas": {
+        "BaseErrorResponse": {
+          "type": "object",
+          "description": "A HTTP Error response",
+          "properties": {
+            "status": {
+              "type": "boolean"
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer",
+                  "minimum": 400,
+                  "maximum": 599
+                },
+                "message": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "example": {
+            "status": false,
+            "error": {
+              "name": "Unauthorized",
+              "statusCode": 401,
+              "message": "Missing authorization header.",
+              "type": "Unauthorized"
+            }
+          }
+        },
+        "BaseResource": {
+          "type": "object",
+          "properties": {
+            "uuid": {
+              "example": "046ae7f2-a3eb-4c4f-ac92-16d7abc56c7e",
+              "type": "string",
+              "description": "The unique identifier for the resource. It can be provided at creation, otherwise it will be generated by the api."
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date (and time) at which the resource was created."
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date (and time) at which the resource was updated last time."
+            },
+            "metadata": {
+              "type": "object",
+              "description": "A map of strings with custom content",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "example": {
+                "key": "value",
+                "hello": "world"
+              }
+            }
+          }
+        },
+        "LocationPoint": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "point"
+              ]
+            },
+            "coordinates": {
+              "$ref": "#/components/schemas/CoordinatesPoint"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        "CoordinatesPoint": {
+          "type": "array",
+          "minLength": 2,
+          "maxLength": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "LocationPolygon": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "polygon"
+              ]
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CoordinatesPoint"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ]
+        },
+        "Project": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "My IoT project",
+                  "type": "string",
+                  "description": "A meaningful name for the project."
+                },
+                "description": {
+                  "example": "In this project we collect data from several energy meters",
+                  "type": "string",
+                  "description": "A description of the project"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "Application": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "name": {
+                  "example": "Mobile Application for ACME IoT Project",
+                  "type": "string",
+                  "description": "A meaningful name for the application."
+                },
+                "description": {
+                  "example": "With this application we display realtime IoT data .",
+                  "type": "string",
+                  "description": "A description of the application"
+                },
+                "connectivityStatus": {
+                  "example": "connected",
+                  "type": "string",
+                  "enum": [
+                    "connected",
+                    "disconnected"
+                  ],
+                  "description": "Connected if the application is connected to the MQTT broker. Disconnected otherwise."
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "Asset": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "description": "Assets are entities that can be used to hold data. For example a physical object that is not directly producing measurements like a Sensor, but is holding interesting physical properties such as weight, dimensions etc.",
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this resource belongs to."
+                },
+                "name": {
+                  "example": "Mobile Application for ACME IoT Project",
+                  "type": "string",
+                  "description": "A meaningful name for the resource."
+                },
+                "description": {
+                  "example": "With this application we display realtime IoT data .",
+                  "type": "string",
+                  "description": "A description of the resource"
+                },
+                "assetTypeId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The uuid of the asset type instance, which holds a description of this kind of assets."
+                },
+                "plantId": {
+                  "example": "p1234",
+                  "type": "string",
+                  "description": "The id of the plant the asset belongs to. Optional."
+                },
+                "parentId": {
+                  "example": "p1234",
+                  "type": "string",
+                  "description": "The id of the parent asset. Optional."
+                },
+                "tags": {
+                  "type": "array",
+                  "description": "An array of tags. Alphanumeric characters only.",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "projectId"
+              ]
+            }
+          ]
+        },
+        "AnomalyConfigurationSeverity": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "number",
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            "threshold": {
+              "type": "string"
+            },
+            "via": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "websocket",
+                  "email"
+                ]
+              }
+            }
+          },
+          "required": [
+            "level",
+            "threshold"
+          ]
+        },
+        "AnomalyConfiguration": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string",
+                  "description": "Anomaly category"
+                },
+                "subCategory": {
+                  "type": "string",
+                  "description": "Anomaly subcategory"
+                },
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "checkContext": {
+                  "type": "string"
+                },
+                "checkFunction": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnomalyConfigurationSeverity"
+                  }
+                }
+              },
+              "required": [
+                "category",
+                "subCategory",
+                "name",
+                "enabled",
+                "severity",
+                "checkContext",
+                "checkFunction"
+              ]
+            }
+          ]
+        },
+        "AnomalySeverity": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "number",
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            "startedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "endedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "duration": {
+              "type": "number",
+              "description": "Duration in milliseconds of the anomaly"
+            }
+          },
+          "required": [
+            "level",
+            "startedAt"
+          ]
+        },
+        "Anomaly": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "startedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "endedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "duration": {
+                  "type": "number",
+                  "description": "Duration in milliseconds of the anomaly"
+                },
+                "configurationId": {
+                  "type": "string",
+                  "description": "Uuid of the anomalyConfiguration"
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "severity": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnomalySeverity"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "Device": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "name": {
+                  "example": "Node-1",
+                  "type": "string",
+                  "description": "A distinguishable name for the node."
+                },
+                "description": {
+                  "example": "This is the gateway for the 4th floor of the building",
+                  "type": "string",
+                  "description": "A description of the node"
+                },
+                "nodeId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The node (datalogger, gateway, etc) connected to this device"
+                },
+                "plantId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The id of the plant in which this device is installed, if the device also has a nodeId, the node and the device must have the same plantId"
+                },
+                "location": {
+                  "$ref": "#/components/schemas/LocationPoint"
+                },
+                "deviceTypeId": {
+                  "example": "acme.energy-meter-500",
+                  "type": "string",
+                  "description": "The uuid of the deviceType resource"
+                },
+                "lastActivityAt": {
+                  "type": "string",
+                  "description": "The ISO8601 date of the last activity, downlink or uplink"
+                },
+                "lastCommunicationAt": {
+                  "type": "string",
+                  "description": "The ISO8601 date of the last activity, downlink or uplink"
+                },
+                "tags": {
+                  "type": "array",
+                  "description": "An array of tags. Alphanumeric characters only.",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "projectId"
+              ]
+            }
+          ]
+        },
+        "AssetType": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "name": {
+                  "example": "ACME dish washer",
+                  "type": "string",
+                  "description": "A distinguishable name for the asset type."
+                },
+                "manufacturer": {
+                  "example": "ACME LTD",
+                  "type": "string",
+                  "description": "Name of the asset manufacturer."
+                },
+                "description": {
+                  "example": "This is an asset with great set of features.",
+                  "type": "string",
+                  "description": "A description of the asset type"
+                },
+                "category": {
+                  "example": "Dish Washer",
+                  "type": "string",
+                  "description": "The broad category of device, like Dish Washer, Hair Drier etc.."
+                }
+              },
+              "required": [
+                "name",
+                "projectId"
+              ]
+            }
+          ]
+        },
+        "DeviceTypeProperty": {
+          "type": "object",
+          "properties": {
+            "uom": {
+              "type": "string",
+              "description": "Unit of measurement",
+              "example": "kW"
+            },
+            "description": {
+              "type": "string",
+              "description": "A description of the property",
+              "example": "Active power absorbed by the device."
+            },
+            "displayName": {
+              "type": "string",
+              "description": "A label for the property",
+              "example": "Absorbed Active Power [kW]"
+            },
+            "type": {
+              "type": "string",
+              "description": "A type for the values of this property",
+              "example": "number",
+              "default": "number",
+              "enum": [
+                "boolean",
+                "number",
+                "integer",
+                "double",
+                "string"
+              ]
+            },
+            "aggregations": {
+              "type": "array",
+              "default": [],
+              "description": "Defines which kind of aggregations should be done on the raw data corresponding to this property.",
+              "items": {
+                "type": "string",
+                "example": [
+                  "avg:quarter",
+                  "avg:hourly",
+                  "delta:daily",
+                  "min:hourly",
+                  "max:daily"
+                ]
+              }
+            }
+          },
+          "required": [
+            "uom",
+            "type",
+            "displayName",
+            "aggregations"
+          ]
+        },
+        "Command": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "description": "Downlink commands. When created via API, the appropriate MQTT clients will receive the command on the dedicated topic. Can be used to exchange messages in the downlink channel, e.g. from cloud to the field.",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the command",
+                  "example": "reboot"
+                },
+                "deviceId": {
+                  "type": "string",
+                  "description": "The uuid of the device"
+                },
+                "parameters": {
+                  "type": "object",
+                  "example": {
+                    "rebootAfterSeconds": 8
+                  }
+                },
+                "status": {
+                  "description": "Describes the status of a command. Can be used to model its lifecycle. Devices can update this resource after receiving the command from the MQTT broker.",
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "received",
+                    "completed",
+                    "failed"
+                  ],
+                  "default": "pending"
+                }
+              }
+            }
+          ]
+        },
+        "DeviceType": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "ACME Energy Meter 500",
+                  "type": "string",
+                  "description": "A distinguishable name for the device type."
+                },
+                "manufacturer": {
+                  "example": "ACME LTD",
+                  "type": "string",
+                  "description": "Name of the device manufacturer."
+                },
+                "model": {
+                  "example": "ACME Meter 500",
+                  "type": "string",
+                  "description": "Name of the device model."
+                },
+                "description": {
+                  "example": "This is an energy meter with great set of features.",
+                  "type": "string",
+                  "description": "A description of the device type"
+                },
+                "category": {
+                  "example": "Energy Meter",
+                  "type": "string",
+                  "description": "The broad category of device, like Energy Meter, Inverter etc.."
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/DeviceTypeProperty"
+                  }
+                },
+                "encoder": {
+                  "type": "string",
+                  "description": "Name of an encoder function."
+                },
+                "decoder": {
+                  "type": "string",
+                  "description": "Name of a decoder function."
+                },
+                "firmwareVersions": {
+                  "type": "array",
+                  "description": "Array of possible firmware versions"
+                }
+              },
+              "required": [
+                "name",
+                "projectId"
+              ]
+            }
+          ]
+        },
+        "NodeType": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "ACME Super Gateway",
+                  "type": "string",
+                  "description": "A distinguishable name for the node type."
+                },
+                "manufacturer": {
+                  "example": "ACME LTD",
+                  "type": "string",
+                  "description": "Name of the manufacturer."
+                },
+                "model": {
+                  "example": "Super Gateway",
+                  "type": "string",
+                  "description": "Name of the model."
+                },
+                "description": {
+                  "example": "This is an energy meter with great set of features.",
+                  "type": "string",
+                  "description": "A description of the node type"
+                },
+                "encoder": {
+                  "type": "string",
+                  "description": "Name of an encoder function."
+                },
+                "decoder": {
+                  "type": "string",
+                  "description": "Name of a decoder function."
+                },
+                "firmwareVersions": {
+                  "type": "array",
+                  "description": "Array of possible firmware versions"
+                }
+              },
+              "required": [
+                "name",
+                "projectId"
+              ]
+            }
+          ]
+        },
+        "Node": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "plantId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The id of the plant in which this device is installed, if the device also has a nodeId, the node and the device must have the same plantId"
+                },
+                "name": {
+                  "example": "Node-1",
+                  "type": "string",
+                  "description": "A distinguishable name for the node."
+                },
+                "description": {
+                  "example": "This is the gateway for the 4th floor of the building",
+                  "type": "string",
+                  "description": "A description of the node"
+                },
+                "connectivityStatus": {
+                  "example": "connected",
+                  "type": "string",
+                  "enum": [
+                    "connected",
+                    "disconnected"
+                  ],
+                  "description": "Connected if the node is connected to the MQTT broker. Disconnected otherwise."
+                },
+                "location": {
+                  "$ref": "#/components/schemas/LocationPoint"
+                },
+                "tags": {
+                  "type": "array",
+                  "description": "An array of tags. Alphanumeric characters only.",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "projectId",
+                "name"
+              ]
+            }
+          ]
+        },
+        "Deployment": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "nodeId": {
+                  "example": "f0a46def-cfc8-4aab-b694-4b5634d72de1",
+                  "type": "string",
+                  "description": "The node where the deployment must be applied."
+                },
+                "spec": {
+                  "description": "A JSON description of the deployment compliant to the Compose specification.",
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "3"
+                    },
+                    "volumes": {
+                      "type": "object",
+                      "properties": {
+                        "mongodata": {
+                          "example": null,
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "mongodb": {
+                          "type": "object",
+                          "properties": {
+                            "restart": {
+                              "type": "string",
+                              "example": "unless-stopped"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "mongo"
+                            },
+                            "volumes": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "mongodata:/data/db"
+                              }
+                            },
+                            "networks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "traefik_default"
+                              }
+                            }
+                          }
+                        },
+                        "app": {
+                          "type": "object",
+                          "properties": {
+                            "environment": {
+                              "type": "object",
+                              "properties": {
+                                "MONGODB_URI": {
+                                  "type": "string",
+                                  "example": "mongodb://mongodb:27017/app"
+                                },
+                                "NODE_ENV": {
+                                  "type": "string",
+                                  "example": "production"
+                                }
+                              }
+                            },
+                            "restart": {
+                              "type": "string",
+                              "example": "unless-stopped"
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "registry.gitlab.com/apio-edge-network/edge-api"
+                            },
+                            "ports": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "7000:7000"
+                              }
+                            },
+                            "depends_on": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "mongodb"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "projectId",
+                "nodeId",
+                "spec"
+              ]
+            }
+          ]
+        },
+        "Plant": {
+          "description": "A plant is a logical group of project resources and typically maps to a location where project resources are located.",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "63d96205-0699-4498-9c07-2db5118d090d",
+                  "type": "string",
+                  "description": "The project this node belongs to."
+                },
+                "name": {
+                  "example": "Plant-1",
+                  "type": "string",
+                  "description": "A distinguishable name for the plant."
+                },
+                "location": {
+                  "$ref": "#/components/schemas/LocationPolygon"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "A description of the plant"
+                },
+                "tags": {
+                  "type": "array",
+                  "description": "An array of tags. Alphanumeric characters only.",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "projectId",
+                "name"
+              ]
+            }
+          ]
+        },
+        "Setting": {
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Project UUID."
+            },
+            "uuid": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Unique id of the resource"
+            },
+            "accountId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Account UUID."
+            },
+            "name": {
+              "example": "ENABLE_FEATURE_X",
+              "type": "string",
+              "description": "Name of the setting"
+            },
+            "data": {
+              "type": "object",
+              "example": {
+                "key": "value"
+              },
+              "description": "A map of values of the setting"
+            }
+          }
+        },
+        "CreateAPIKeys": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "example": "My API Key",
+              "type": "string",
+              "description": "API Key name."
+            },
+            "description": {
+              "example": "This API Key let service X to authenticate",
+              "type": "string",
+              "description": "API Key description."
+            },
+            "expire": {
+              "example": "2042-01-01T00:00:00.000Z",
+              "type": "string",
+              "format": "ISO8601",
+              "description": "API Key expiration date"
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "apio.core.nodes.list",
+                "description": "List of API Key permissions."
+              }
+            }
+          },
+          "required": [
+            "name",
+            "permissions"
+          ]
+        },
+        "APIKeys": {
+          "type": "object",
+          "properties": {
+            "projectId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Project UUID."
+            },
+            "name": {
+              "example": "My API Key",
+              "type": "string",
+              "description": "API Key name."
+            },
+            "value": {
+              "example": "zaCELgL.0imfnc8mVLWwsAawjYr4Rx-Af50DDqtlx",
+              "type": "string",
+              "description": "The API Key value."
+            },
+            "description": {
+              "example": "This API Key let service X to authenticate",
+              "type": "string",
+              "description": "API Key description."
+            },
+            "expire": {
+              "example": "2042-01-01T00:00:00.000Z",
+              "type": "string",
+              "format": "ISO8601",
+              "description": "API Key expiration date"
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "apio.core.nodes.list",
+                "description": "List of API Key permissions."
+              }
+            }
+          }
+        },
+        "Accounts": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "example": "active",
+              "enum": [
+                "active",
+                "inactive",
+                "deleted"
+              ],
+              "type": "string",
+              "description": "Account status."
+            },
+            "fullName": {
+              "example": "Aulo Agerio",
+              "type": "string",
+              "description": "Account full name."
+            },
+            "password": {
+              "example": "v53YyWWRSKn2fEak",
+              "type": "string",
+              "description": "Login password."
+            },
+            "email": {
+              "example": "cxili_9k@technt.org",
+              "type": "string",
+              "description": "Login email."
+            },
+            "mustResetPassword": {
+              "example": false,
+              "type": "boolean",
+              "description": "Whether or not the account must reset the password."
+            }
+          }
+        },
+        "Roles": {
+          "type": "object",
+          "properties": {
+            "uuid": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Unique id of the resource"
+            },
+            "projectId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Project UUID."
+            },
+            "name": {
+              "example": "My Role",
+              "type": "string",
+              "description": "Role name."
+            },
+            "description": {
+              "example": "This Role let actions X, Y and Z to be performed.",
+              "type": "string",
+              "description": "Role description."
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "apio.core.nodes.list",
+                "description": "List of Role permissions."
+              }
+            }
+          }
+        },
+        "ACLRules": {
+          "type": "object",
+          "properties": {
+            "uuid": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Unique id of the resource"
+            },
+            "projectId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Project UUID."
+            },
+            "roleId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Role UUID."
+            },
+            "accountId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Account UUID."
+            }
+          }
+        },
+        "Groups": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+                  "type": "string",
+                  "description": "Reference to Project UUID."
+                },
+                "name": {
+                  "example": "My Group",
+                  "type": "string",
+                  "description": "Name of the group"
+                },
+                "description": {
+                  "example": "My Group Description",
+                  "type": "string",
+                  "description": "Description of the group"
+                },
+                "resources": {
+                  "example": [
+                    "/projects/myProject/devices/myDeviceId"
+                  ],
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Array of resources assigned to this group"
+                }
+              }
+            }
+          ]
+        },
+        "Groupmemberships": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/BaseResource"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+                  "type": "string",
+                  "description": "Reference to Project UUID."
+                },
+                "groupId": {
+                  "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+                  "type": "string",
+                  "description": "Uuid of the group"
+                },
+                "accountId": {
+                  "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+                  "type": "string",
+                  "description": "Uuid of the account"
+                }
+              }
+            }
+          ]
+        },
+        "Tokens": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "type": "string",
+              "description": "The Token value."
+            },
+            "accountId": {
+              "example": "ffe78f86-56a0-405b-816a-b3b04021b844",
+              "type": "string",
+              "description": "Reference to Account UUID."
+            }
+          }
+        },
+        "AccountActivationToken": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "example": "cxili_9k@technt.org",
+              "type": "string",
+              "description": "The email of the account the token is referred to."
+            },
+            "token": {
+              "example": "57c6db3ffd9f68e8897b5f11f900bddf",
+              "type": "string",
+              "description": "The Token value."
+            }
+          }
+        },
+        "Data": {
+          "type": "object",
+          "example": {
+            "name": "temperature",
+            "value": 19.7,
+            "time": "2023-01-15T00:00:00.000Z",
+            "deviceId": "5d15b4ed-64c1-4899-bf22-1684450d76b0"
+          },
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the metric.",
+              "minLength": 1
+            },
+            "value": {
+              "type": "number",
+              "description": "The value of the metric."
+            },
+            "projectId": {
+              "type": "string",
+              "description": "Project uuid",
+              "minLength": 1
+            },
+            "deviceId": {
+              "type": "string",
+              "description": "Device uuid",
+              "minLength": 1
+            },
+            "time": {
+              "type": "string",
+              "description": "ISO 8601 Timestamp"
+            }
+          }
+        },
+        "TimeseriesQuery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "object",
+                "properties": {
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "series": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "URIs of the timeseries.",
+                    "example": [
+                      "devices/12345/power",
+                      "devices/12345/impenergy/delta/hourly"
+                    ]
+                  },
+                  "name": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "timeFrom": {
+                    "type": "string"
+                  },
+                  "timeTo": {
+                    "type": "string"
+                  }
+                }
+              },
+              "pipeline": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "add": {
+                      "type": "number"
+                    },
+                    "mul": {
+                      "type": "number"
+                    },
+                    "resample": {
+                      "type": "object",
+                      "properties": {
+                        "interval": {
+                          "type": "integer"
+                        },
+                        "operation": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "interval",
+                        "operation"
+                      ]
+                    },
+                    "aggregate": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operation": {
+                            "type": "string"
+                          },
+                          "columns": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "output": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "operation",
+                          "columns",
+                          "output"
+                        ]
+                      }
+                    },
+                    "project": {
+                      "type": "object",
+                      "properties": {
+                        "columns": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        }
+      }
+    },
+    "tags": [],
+    "x-tagGroups": [
+      {
+        "name": "asset management",
+        "tags": [
+          "Project",
+          "Node",
+          "Device",
+          "AssetType",
+          "DeviceType",
+          "NodeType",
+          "Application",
+          "Asset",
+          "Plant",
+          "AnomalyConfiguration",
+          "Anomaly"
+        ]
+      },
+      {
+        "name": "user management",
+        "tags": [
+          "Accounts Management",
+          "API Keys",
+          "Accounts",
+          "Settings",
+          "Roles",
+          "ACL Rules",
+          "Groups",
+          "Groupmembership"
+        ]
+      },
+      {
+        "name": "data exchange",
+        "tags": [
+          "Data"
+        ]
+      }
+    ],
+    "info": {
+      "title": "Apio IoT API",
+      "version": "latest",
+      "description": "# Introduction\n\nThe Apio IoT API is based on HTTP and [REST](https://en.wikipedia.org/wiki/Representational_state_transfer), it exposes resource-oriented URLs, accepts [JSON-encoded](https://www.json.org/json-en.html) bodies (with a few documented exceptions), returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs, such as `POST`, `GET` and `PUT`.\n\nThis means you can use any HTTP/REST client or library to interact with it, as long as you provide the correct parameters described in this documentation.\n\n# Authentication\n\nMost of the functionalities requires authentication, which comes in two forms:\n\n- **Bearer Tokens**: Users can provide their credentials at the [authenticate endpoint](/api#tag/Accounts/operation/authenticateAccount) and, if those credentials are correct, the API will provide in return a bearer token which can be used to authenticate further requests.\n- **API Keys**: applications and devices can provide API Keys created by users.\n\n### Bearer Token\n\nOnce an authentication token was obtained by the [authenticate endpoint](/api#tag/Accounts/operation/authenticateAccount), the token can be used to authenticate subsequent requests.\n\nThe token must be provided in the Authorization header using the following syntax and replacing `<mytoken>` with the actual token.\n\n```http\nAuthorization: bearer <token>\n```\n\n### API Key\n\nAPI Keys can be created using the [API Key endpoint](/api#tag/API-Keys/operation/createAPIKey), remember that the value of the apikey is showed to you only in the response of this endpoint, after that you have no way to retrieve it, since we do not store its value in clear.\n\nThe API key must be provided in the Authorization header using the following syntax and replacing `<mykey>` with the actual api key.\n\n```http\nAuthorization: apikey <mykey>\n```\n\n# Errors\nErrors are reported using conventional HTTP status codes, hence any response with a HTTP status in the `4xx` or `5xx` range is an error response, while responses in the `2xx` range indicate success.\n\nError responses also include a response body with the following form:\n\n```json\n{\n  \"status\":false,\n  \"error\":{\n    \"name\":\"Unauthorized\",\n    \"statusCode\":401,\n    \"message\":\"Missing authorization header.\",\n    \"type\":\"Unauthorized\"\n  }\n}\n```\n\nSome errors might provide additional context in the form of a `code` attribute, in the `error` struct.\n\n# Pagination\n\nAll API resources have methods for fetching lists of items, for example you can list devices, list plants and so on. All these endpoints allow to paginate the results by using two parameters: `skip` and `limit`.\n\n`limit` is used to set the number of items that should be returned in the response, while `skip` tells the API how many items should be skipped in the result set.\n\nFor example, passing `skip=20` and `limit=20` returns the items from number 21 to 40 in the collection (depending on the chosen sorting).\n\n# Sorting\n\nAs for pagination parameters, all list methods support sorting by arbitrary attributes.\n\nThe `sortby` parameter tells the api which field should be used for sorting, while `sortorder` can have only two possible values: `ASC` for ascending sorting and `DESC` for descending sorting.\n\n# Request IDs\n\nEach API response has a request identifier. This identifier can be found in the response headers under the header `X-Request-Id`. This can be useful when contacting support for easier issue identification."
+    },
+    "servers": [
+      {
+        "url": "https://api.apio.network"
+      }
+    ]
+  }
+  
