@@ -4892,7 +4892,7 @@
           "name": "Authorization",
           "required": true,
           "description": "The Bearer token",
-          "example": "Bearer W5wwSsJwJwco3tZ0",
+          "example": "Bearer sample-bearer-value",
           "schema": {
             "type": "string"
           }
@@ -4902,7 +4902,7 @@
           "name": "Authorization",
           "required": true,
           "description": "The API Key",
-          "example": "APIKey zaCELgL.0imfnc8mVLWwsAawjYr4Rx-Af50DDqtlx",
+          "example": "APIKey sample-apikey-value",
           "schema": {
             "type": "string"
           }
